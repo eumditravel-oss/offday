@@ -32,14 +32,12 @@ body{
   font-size:14px;
 }
 .app{
-  display:grid;
-  grid-template-columns:280px 1fr;
+  display:block;
   min-height:100vh;
 }
+/* 변경 후 */
 .sidebar{
-  background:var(--nav);
-  color:#fff;
-  padding:18px 14px;
+  display:none;
 }
 .logo{
   display:flex;
@@ -100,6 +98,7 @@ body{
   color:#fff;
 }
 .main{
+  width:100%;
   min-width:0;
 }
 .topbar{
@@ -178,7 +177,7 @@ body{
   font-weight:900;
 }
 .content{
-  padding:24px 26px 40px;
+  padding:24px 32px 40px;
 }
 .page-title{
   display:flex;
@@ -515,7 +514,7 @@ textarea{min-height:90px;resize:vertical}
   line-height:1.7;
 }
 @media(max-width:1180px){
-  .app{grid-template-columns:1fr}
+  .app{display:block}
   .sidebar{display:none}
   .grid,.employee-layout,.section-grid{grid-template-columns:1fr}
 }
@@ -533,52 +532,7 @@ textarea{min-height:90px;resize:vertical}
 
 <body>
 <div class="app">
-  <aside class="sidebar">
-    <div class="logo">
-      <div class="logo-mark">C</div>
-      <div class="logo-text">
-        <strong>CON-COST</strong>
-        <span>Groupware System</span>
-      </div>
-    </div>
-
-    <div class="menu-group">
-      <div class="menu-title">Thư điện tử</div>
-      <div class="menu-item">Hộp thư đến</div>
-      <div class="menu-item">Mục đã gửi</div>
-      <div class="menu-item">Bản nháp</div>
-    </div>
-
-    <div class="menu-group">
-      <div class="menu-title">Phê duyệt điện tử</div>
-      <div class="menu-item">Hộp chờ duyệt</div>
-      <div class="menu-item">Phê duyệt đã gửi</div>
-      <div class="menu-item">Tạo tài liệu mới</div>
-    </div>
-
-    <div class="menu-group">
-      <div class="menu-title">Lịch trình</div>
-      <div class="menu-item">Làm việc công ty</div>
-      <div class="menu-item">Nghỉ phép / Công tác</div>
-      <div class="menu-item">Ngày lễ (VN/HQ)</div>
-    </div>
-
-    <div class="menu-group">
-      <div class="menu-title">Quản lý công việc</div>
-      <div class="menu-sub">Dashboard Tổng quan</div>
-      <div class="menu-sub">Tiếp nhận Dự án</div>
-      <div class="menu-sub">Nhật ký Thực hiện</div>
-      <div class="menu-sub">Log tiến trình dự án</div>
-    </div>
-
-    <div class="menu-group">
-      <div class="menu-title">Hỗ trợ quản lý</div>
-      <div class="menu-item active">Cài đặt hệ thống</div>
-      <div class="menu-sub active">Tổ chức & Nhân sự</div>
-      <div class="menu-sub">Cài đặt nghỉ phép, nghỉ lễ</div>
-      <div class="menu-sub">Cài đặt mẫu phê duyệt</div>
-    </div>
-  </aside>
+  
 
   <section class="main">
     <header class="topbar">
