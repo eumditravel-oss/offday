@@ -7,21 +7,22 @@
 
 <style>
 :root{
-  --navy:#0f172a;
-  --blue:#2563eb;
-  --blue-dark:#1d4ed8;
-  --sky:#eaf2ff;
-  --bg:#f4f6fa;
-  --card:#fff;
-  --line:#d8e2ef;
-  --line-dark:#2f6fb3;
-  --text:#1e293b;
+  --bg:#f4f6fb;
+  --panel:#ffffff;
+  --nav:#0f172a;
+  --nav2:#111827;
+  --line:#e5e7eb;
+  --line2:#dbe3ef;
+  --text:#1f2937;
   --muted:#64748b;
+  --blue:#2563eb;
+  --blue2:#1d4ed8;
+  --sky:#eaf2ff;
   --green:#16a34a;
-  --yellow:#d97706;
   --red:#dc2626;
-  --radius:14px;
-  --shadow:0 10px 28px rgba(15,23,42,.08);
+  --yellow:#d97706;
+  --radius:18px;
+  --shadow:0 14px 36px rgba(15,23,42,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -30,123 +31,253 @@ body{
   font-family:"Pretendard","Noto Sans KR",Arial,sans-serif;
   font-size:14px;
 }
-.layout{
+.app{
   display:grid;
-  grid-template-columns:250px 1fr;
+  grid-template-columns:280px 1fr;
   min-height:100vh;
 }
 .sidebar{
-  background:var(--navy);
+  background:var(--nav);
   color:#fff;
-  padding:22px 16px;
+  padding:18px 14px;
 }
 .logo{
-  font-size:25px;
-  font-weight:900;
-  margin-bottom:28px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 10px 20px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  margin-bottom:16px;
 }
-.side-title{
+.logo-mark{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#2563eb,#38bdf8);
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+.logo-text strong{
+  display:block;
+  font-size:20px;
+  letter-spacing:-.5px;
+}
+.logo-text span{
   color:#94a3b8;
   font-size:12px;
-  margin:22px 8px 8px;
-  font-weight:800;
 }
-.side-item{
-  padding:12px 14px;
-  border-radius:10px;
+.menu-group{
+  margin:18px 0;
+}
+.menu-title{
+  color:#94a3b8;
+  font-size:12px;
+  font-weight:900;
+  padding:0 10px;
+  margin-bottom:8px;
+}
+.menu-item{
+  padding:11px 12px;
+  border-radius:12px;
   color:#d1d5db;
   font-weight:700;
   margin-bottom:5px;
 }
-.side-item.active{
+.menu-item.active{
   background:var(--blue);
   color:#fff;
 }
-.main{
-  padding:24px;
+.menu-sub{
+  padding:9px 12px 9px 22px;
+  border-radius:10px;
+  color:#cbd5e1;
+  font-size:13px;
+  margin-bottom:3px;
 }
-.header{
+.menu-sub.active{
+  background:rgba(37,99,235,.18);
+  color:#fff;
+}
+.main{
+  min-width:0;
+}
+.topbar{
+  height:64px;
   background:#fff;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 26px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.top-tabs{
+  display:flex;
+  gap:20px;
+  font-weight:900;
+  color:#475569;
+}
+.top-tabs span.active{
+  color:var(--blue);
+}
+.top-right{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.lang{
   border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:22px 24px;
+  border-radius:999px;
+  padding:7px 12px;
+  background:#fff;
+  color:#475569;
+  font-weight:800;
+}
+.bell{
+  width:36px;
+  height:36px;
+  border-radius:12px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.bell::after{
+  content:"3";
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  background:var(--red);
+  color:#fff;
+  width:18px;
+  height:18px;
+  border-radius:999px;
+  font-size:11px;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+.profile{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-weight:900;
+}
+.avatar{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#2563eb,#38bdf8);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+}
+.content{
+  padding:24px 26px 40px;
+}
+.page-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
   margin-bottom:18px;
 }
-.header h1{
-  font-size:26px;
-  margin-bottom:8px;
+.page-title h1{
+  font-size:28px;
+  letter-spacing:-.8px;
 }
-.header p{
+.page-title p{
+  margin-top:8px;
   color:var(--muted);
-  line-height:1.6;
+}
+.quick-actions{
+  display:flex;
+  gap:8px;
+}
+.btn{
+  border:none;
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:900;
+  cursor:pointer;
+}
+.btn-primary{
+  background:var(--blue);
+  color:#fff;
+}
+.btn-line{
+  background:#fff;
+  border:1px solid var(--line2);
+  color:#334155;
 }
 .tabbar{
   display:flex;
   gap:8px;
   margin-bottom:18px;
 }
-.tab-btn{
-  border:1px solid var(--line);
+.tab{
   background:#fff;
-  border-radius:11px;
-  padding:11px 18px;
+  border:1px solid var(--line2);
+  color:#475569;
+  padding:11px 16px;
+  border-radius:13px;
   font-weight:900;
   cursor:pointer;
-  color:#475569;
 }
-.tab-btn.active{
+.tab.active{
   background:var(--blue);
   border-color:var(--blue);
   color:#fff;
 }
 .panel{display:none}
 .panel.active{display:block}
+.grid{
+  display:grid;
+  grid-template-columns:1.45fr .9fr;
+  gap:18px;
+  align-items:start;
+}
 .card{
   background:#fff;
-  border:1px solid var(--line);
+  border:1px solid var(--line2);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
-  margin-bottom:18px;
   overflow:hidden;
+  margin-bottom:18px;
 }
 .card-head{
   padding:16px 18px;
-  border-bottom:1px solid #edf1f6;
+  background:#fbfdff;
+  border-bottom:1px solid #edf2f7;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:#fbfdff;
 }
 .card-head h2{
   font-size:18px;
+  letter-spacing:-.4px;
 }
 .card-body{
   padding:18px;
 }
-.btn{
-  border:none;
-  border-radius:10px;
-  padding:10px 14px;
-  font-weight:900;
-  cursor:pointer;
-}
-.btn-primary{background:var(--blue);color:#fff}
-.btn-line{background:#fff;border:1px solid var(--line);color:#334155}
-.grid{
-  display:grid;
-  grid-template-columns:1.45fr .85fr;
-  gap:18px;
+.table-wrap{
+  overflow-x:auto;
 }
 table{
   width:100%;
   border-collapse:collapse;
+  min-width:760px;
 }
 th,td{
-  border-bottom:1px solid #edf1f6;
   padding:12px 10px;
+  border-bottom:1px solid #edf2f7;
   text-align:left;
   font-size:13px;
+  vertical-align:middle;
 }
 th{
   background:#f8fafc;
@@ -163,553 +294,772 @@ th{
 }
 .badge.green{background:#eaf7ef;color:var(--green)}
 .badge.red{background:#fee2e2;color:var(--red)}
-.badge.yellow{background:#fff4e5;color:var(--yellow)}
+.badge.yellow{background:#fff7ed;color:var(--yellow)}
 .badge.blue{background:var(--sky);color:var(--blue)}
+.badge.gray{background:#f1f5f9;color:#475569}
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
 }
+.field.full{grid-column:1/-1}
 .field label{
   display:block;
-  margin-bottom:6px;
-  font-weight:900;
+  margin-bottom:7px;
   font-size:13px;
+  font-weight:900;
+  color:#334155;
 }
-.field input,.field select{
+input,select,textarea{
   width:100%;
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:10px;
+  border:1px solid var(--line2);
+  border-radius:12px;
+  padding:11px;
+  font-size:14px;
+  outline:none;
+  background:#fff;
 }
+textarea{min-height:90px;resize:vertical}
 .toggle-list{
   display:grid;
   gap:10px;
 }
 .toggle{
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:12px;
+  border:1px solid var(--line2);
+  border-radius:14px;
+  padding:13px;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
+  background:#fbfdff;
 }
 .switch{
-  width:42px;
-  height:23px;
+  width:43px;
+  height:24px;
   background:var(--blue);
   border-radius:999px;
   position:relative;
 }
 .switch::after{
   content:"";
-  width:17px;
-  height:17px;
+  width:18px;
+  height:18px;
   background:#fff;
   border-radius:50%;
   position:absolute;
-  right:3px;
   top:3px;
+  right:3px;
 }
-
-/* 인사카드 */
-.hr-card{
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:18px;
+}
+.info-card{
   background:#fff;
-  border:1px solid #cbd5e1;
+  border:1px solid var(--line2);
+  border-radius:16px;
+  box-shadow:var(--shadow);
   padding:16px;
 }
-.hr-section-title{
+.info-card span{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
   font-weight:900;
-  margin:18px 0 8px;
-  font-size:14px;
+  margin-bottom:8px;
 }
-.person-table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;
-  font-size:12px;
+.info-card strong{
+  font-size:24px;
+  letter-spacing:-.6px;
 }
-.person-table td,
-.person-table th{
-  border:1px solid #cfd8e3;
-  padding:6px 8px;
-  height:28px;
+.employee-layout{
+  display:grid;
+  grid-template-columns:330px 1fr;
+  gap:18px;
 }
-.person-table th{
-  background:#eaf4fb;
-  color:#000;
-  font-weight:800;
-  text-align:center;
+.employee-list{
+  display:grid;
+  gap:10px;
 }
-.person-table .label{
-  background:#eaf4fb;
-  font-weight:800;
-  text-align:center;
-  width:120px;
-}
-.person-table .photo{
-  width:120px;
-  text-align:center;
-  vertical-align:middle;
-}
-.photo-box{
-  width:110px;
-  height:140px;
-  margin:auto;
-  border:1px solid #999;
-  background:#f1f5f9;
+.employee-item{
   display:flex;
+  gap:12px;
   align-items:center;
-  justify-content:center;
-  color:#64748b;
-  font-weight:800;
+  padding:13px;
+  border:1px solid var(--line2);
+  border-radius:15px;
+  background:#fff;
 }
-.sub-table{
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;
+.employee-item.active{
+  border-color:var(--blue);
+  background:#f8fbff;
+}
+.emp-photo{
+  width:46px;
+  height:46px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#2563eb,#38bdf8);
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-weight:900;
+}
+.emp-name{
+  font-weight:900;
+}
+.emp-meta{
+  color:var(--muted);
+  margin-top:3px;
   font-size:12px;
-  margin-bottom:12px;
 }
-.sub-table th,
-.sub-table td{
-  border:1px solid #b8d3ef;
-  height:26px;
-  padding:5px;
+.profile-head{
+  display:grid;
+  grid-template-columns:96px 1fr auto;
+  gap:18px;
+  align-items:center;
 }
-.sub-table th{
-  background:#eaf4fb;
-  color:#000;
-  text-align:center;
+.profile-photo{
+  width:96px;
+  height:118px;
+  border-radius:22px;
+  background:#e2e8f0;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  color:#64748b;
+  font-weight:900;
+  border:1px solid var(--line2);
 }
-.section-line{
-  border-top:2px solid var(--line-dark);
+.profile-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
-@media(max-width:1100px){
-  .layout{grid-template-columns:1fr}
+.profile-main h2{
+  font-size:24px;
+  margin-bottom:8px;
+}
+.profile-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.section-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.detail-list{
+  display:grid;
+  grid-template-columns:130px 1fr;
+  gap:10px 14px;
+}
+.detail-list dt{
+  color:var(--muted);
+  font-weight:900;
+}
+.detail-list dd{
+  color:#1f2937;
+  font-weight:700;
+}
+.eval-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+.eval-box{
+  border:1px solid var(--line2);
+  background:#fbfdff;
+  border-radius:14px;
+  padding:14px;
+}
+.eval-box span{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+}
+.eval-box strong{
+  display:block;
+  margin-top:8px;
+  font-size:22px;
+}
+.cert-list{
+  display:grid;
+  gap:10px;
+}
+.cert-item{
+  border:1px solid var(--line2);
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#fff;
+}
+.cert-title{
+  font-weight:900;
+}
+.cert-desc{
+  color:var(--muted);
+  margin-top:4px;
+  font-size:12px;
+}
+.notice{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  border-radius:14px;
+  padding:14px;
+  line-height:1.7;
+}
+@media(max-width:1180px){
+  .app{grid-template-columns:1fr}
   .sidebar{display:none}
-  .grid{grid-template-columns:1fr}
+  .grid,.employee-layout,.section-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .topbar{height:auto;align-items:flex-start;flex-direction:column;padding:14px}
+  .top-tabs{flex-wrap:wrap;gap:10px}
+  .content{padding:16px}
+  .page-title{display:block}
+  .quick-actions{margin-top:12px}
+  .info-grid,.form-grid,.eval-grid{grid-template-columns:1fr}
+  .profile-head{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
-<div class="layout">
+<div class="app">
   <aside class="sidebar">
-    <div class="logo">CON-COST</div>
+    <div class="logo">
+      <div class="logo-mark">C</div>
+      <div class="logo-text">
+        <strong>CON-COST</strong>
+        <span>Groupware System</span>
+      </div>
+    </div>
 
-    <div class="side-title">경영지원</div>
-    <div class="side-item active">근태 관리자 설정</div>
-    <div class="side-item">인사카드</div>
-    <div class="side-item">연차 정책</div>
-    <div class="side-item">조직 설정</div>
+    <div class="menu-group">
+      <div class="menu-title">Thư điện tử</div>
+      <div class="menu-item">Hộp thư đến</div>
+      <div class="menu-item">Mục đã gửi</div>
+      <div class="menu-item">Bản nháp</div>
+    </div>
 
-    <div class="side-title">전자결재</div>
-    <div class="side-item">결재관리</div>
-    <div class="side-item">양식관리</div>
+    <div class="menu-group">
+      <div class="menu-title">Phê duyệt điện tử</div>
+      <div class="menu-item">Hộp chờ duyệt</div>
+      <div class="menu-item">Phê duyệt đã gửi</div>
+      <div class="menu-item">Tạo tài liệu mới</div>
+    </div>
+
+    <div class="menu-group">
+      <div class="menu-title">Lịch trình</div>
+      <div class="menu-item">Làm việc công ty</div>
+      <div class="menu-item">Nghỉ phép / Công tác</div>
+      <div class="menu-item">Ngày lễ (VN/HQ)</div>
+    </div>
+
+    <div class="menu-group">
+      <div class="menu-title">Quản lý công việc</div>
+      <div class="menu-sub">Dashboard Tổng quan</div>
+      <div class="menu-sub">Tiếp nhận Dự án</div>
+      <div class="menu-sub">Nhật ký Thực hiện</div>
+      <div class="menu-sub">Log tiến trình dự án</div>
+    </div>
+
+    <div class="menu-group">
+      <div class="menu-title">Hỗ trợ quản lý</div>
+      <div class="menu-item active">Cài đặt hệ thống</div>
+      <div class="menu-sub active">Tổ chức & Nhân sự</div>
+      <div class="menu-sub">Cài đặt nghỉ phép, nghỉ lễ</div>
+      <div class="menu-sub">Cài đặt mẫu phê duyệt</div>
+    </div>
   </aside>
 
-  <main class="main">
-    <div class="header">
-      <h1>경영지원 관리 화면</h1>
-      <p>경영지원 탭에서는 근태 정책을 관리하고, 인사카드 탭에서는 직원별 인사정보를 별도로 관리하는 구조입니다.</p>
-    </div>
-
-    <div class="tabbar">
-      <button class="tab-btn active" data-tab="admin">경영지원 관리자 설정</button>
-      <button class="tab-btn" data-tab="person">인사카드</button>
-    </div>
-
-    <!-- 경영지원 관리자 설정 -->
-    <section id="admin" class="panel active">
-      <div class="grid">
-        <section>
-          <div class="card">
-            <div class="card-head">
-              <h2>근태 유형 정책 관리</h2>
-              <button class="btn btn-primary">+ 유형 추가</button>
-            </div>
-            <div class="card-body">
-              <table>
-                <thead>
-                  <tr>
-                    <th>유형</th>
-                    <th>연차 차감</th>
-                    <th>일정 반영</th>
-                    <th>근무일 제외</th>
-                    <th>증빙서류</th>
-                    <th>사용 대상</th>
-                    <th>설정</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>연차</td>
-                    <td><span class="badge red">자동 차감</span></td>
-                    <td><span class="badge green">자동 반영</span></td>
-                    <td><span class="badge green">제외</span></td>
-                    <td><span class="badge blue">불필요</span></td>
-                    <td>전체 직원</td>
-                    <td><button class="btn btn-line">편집</button></td>
-                  </tr>
-                  <tr>
-                    <td>출장</td>
-                    <td><span class="badge blue">차감 없음</span></td>
-                    <td><span class="badge green">자동 반영</span></td>
-                    <td><span class="badge blue">제외 안함</span></td>
-                    <td><span class="badge blue">불필요</span></td>
-                    <td>전체 직원</td>
-                    <td><button class="btn btn-line">편집</button></td>
-                  </tr>
-                  <tr>
-                    <td>병가</td>
-                    <td><span class="badge yellow">승인 시 선택</span></td>
-                    <td><span class="badge green">자동 반영</span></td>
-                    <td><span class="badge yellow">승인 시 선택</span></td>
-                    <td><span class="badge red">필수</span></td>
-                    <td>전체 직원</td>
-                    <td><button class="btn btn-line">편집</button></td>
-                  </tr>
-                  <tr>
-                    <td>공가 / 예비군</td>
-                    <td><span class="badge yellow">승인 시 선택</span></td>
-                    <td><span class="badge green">자동 반영</span></td>
-                    <td><span class="badge yellow">승인 시 선택</span></td>
-                    <td><span class="badge red">필수</span></td>
-                    <td>한국 법인</td>
-                    <td><button class="btn btn-line">편집</button></td>
-                  </tr>
-                  <tr>
-                    <td>육아휴직</td>
-                    <td><span class="badge blue">차감 없음</span></td>
-                    <td><span class="badge green">자동 반영</span></td>
-                    <td><span class="badge green">제외</span></td>
-                    <td><span class="badge red">필수</span></td>
-                    <td>전체 직원</td>
-                    <td><button class="btn btn-line">편집</button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-head">
-              <h2>경영지원 승인 시 처리 기준</h2>
-            </div>
-            <div class="card-body">
-              <table>
-                <thead>
-                  <tr>
-                    <th>구분</th>
-                    <th>승인 시 경영지원 선택 항목</th>
-                    <th>자동 반영 위치</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>병가</td>
-                    <td>연차 차감 여부 / 근무일 제외 여부 / 증빙 확인</td>
-                    <td>일정관리, 마이페이지, 연차현황</td>
-                  </tr>
-                  <tr>
-                    <td>공가</td>
-                    <td>공가 인정 여부 / 연차 차감 여부 / 증빙 확인</td>
-                    <td>일정관리, 근태현황</td>
-                  </tr>
-                  <tr>
-                    <td>출장</td>
-                    <td>출장 기간 및 일정 반영 확인</td>
-                    <td>일정관리</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        <aside>
-          <div class="card">
-            <div class="card-head">
-              <h2>정책 편집 예시</h2>
-            </div>
-            <div class="card-body">
-              <div class="form-grid">
-                <div class="field">
-                  <label>유형명</label>
-                  <input value="병가">
-                </div>
-                <div class="field">
-                  <label>사용 대상</label>
-                  <select>
-                    <option>전체 직원</option>
-                    <option>한국 법인</option>
-                    <option>베트남 법인</option>
-                    <option>특정 부서</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>연차 차감 정책</label>
-                  <select>
-                    <option>승인 시 선택</option>
-                    <option>자동 차감</option>
-                    <option>차감 없음</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label>근무일 제외 정책</label>
-                  <select>
-                    <option>승인 시 선택</option>
-                    <option>자동 제외</option>
-                    <option>제외 안함</option>
-                  </select>
-                </div>
-              </div>
-
-              <div style="height:14px"></div>
-
-              <div class="toggle-list">
-                <div class="toggle">
-                  <strong>일정 자동 등록</strong>
-                  <div class="switch"></div>
-                </div>
-                <div class="toggle">
-                  <strong>증빙서류 필수</strong>
-                  <div class="switch"></div>
-                </div>
-                <div class="toggle">
-                  <strong>승인 시 경영지원 최종 선택 허용</strong>
-                  <div class="switch"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-head">
-              <h2>연차 계산 참고</h2>
-            </div>
-            <div class="card-body">
-              <p style="line-height:1.7;color:#475569;">
-                현재 발생 연차 계산은<br>
-                <strong>https://www.nodong.kr/AnnuaVacationCal</strong><br>
-                사이트 기준으로 검토 중이며, 향후 내부 웹에 자동 반영 가능하도록 추가 연구가 필요합니다.
-              </p>
-            </div>
-          </div>
-        </aside>
+  <section class="main">
+    <header class="topbar">
+      <div class="top-tabs">
+        <span>전자메일</span>
+        <span>전자결재</span>
+        <span>업무관리</span>
+        <span>일정관리</span>
+        <span class="active">경영지원</span>
       </div>
-    </section>
 
-    <!-- 인사카드 -->
-    <section id="person" class="panel">
-      <div class="card">
-        <div class="card-head">
-          <h2>인사카드</h2>
-          <button class="btn btn-primary">저장</button>
-        </div>
-
-        <div class="card-body">
-          <div class="hr-card">
-            <table class="person-table">
-              <tr>
-                <td class="label">성명</td>
-                <td><strong>박용진</strong></td>
-                <td class="label">성명(영문)</td>
-                <td></td>
-                <td class="label">성명(한문)</td>
-                <td></td>
-                <td class="photo" rowspan="7">
-                  <div class="photo-box">사진</div>
-                </td>
-              </tr>
-              <tr>
-                <td class="label">주민등록번호</td>
-                <td>****** - *******</td>
-                <td class="label">생년월일</td>
-                <td>1992-02-23</td>
-                <td class="label">결혼유무</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="label">부서</td>
-                <td>BIM파트</td>
-                <td class="label">입사일자</td>
-                <td>2018-04-01</td>
-                <td class="label">최종입사일</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="label">담당업무</td>
-                <td></td>
-                <td class="label">직급</td>
-                <td></td>
-                <td class="label">현직급 승진일</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="label">입사경로</td>
-                <td></td>
-                <td class="label"></td>
-                <td></td>
-                <td class="label">추천인/관계</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td class="label">주소</td>
-                <td colspan="5">서울 강북구 솔매로41길 30</td>
-              </tr>
-              <tr>
-                <td class="label">이메일</td>
-                <td>yjpark@con-cost.com</td>
-                <td class="label">전화번호</td>
-                <td>070-4048-1706</td>
-                <td class="label">핸드폰 번호</td>
-                <td>010-7700-7859</td>
-              </tr>
-              <tr>
-                <td class="label">비고</td>
-                <td colspan="6" style="height:42px;"></td>
-              </tr>
-            </table>
-
-            <div class="hr-section-title">인사평가</div>
-            <table class="sub-table section-line">
-              <tr>
-                <th>년도</th>
-                <th>평가시기</th>
-                <th>역량평가</th>
-                <th>업적평가</th>
-                <th>종합평가</th>
-              </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-
-            <div class="hr-section-title">담당업무</div>
-            <table class="sub-table section-line">
-              <tr>
-                <th>담당업무명</th>
-                <th>담당업무 내용</th>
-                <th>구분</th>
-                <th>업무비중(M)</th>
-                <th>업무비중(S)</th>
-              </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-
-            <div class="hr-section-title">학력</div>
-            <table class="sub-table section-line">
-              <tr>
-                <th>학력</th>
-                <th>학교명</th>
-                <th>입학일자</th>
-                <th>졸업일자</th>
-                <th>주야구분</th>
-                <th>전공명</th>
-                <th>소재지</th>
-                <th>기타</th>
-                <th>졸업구분</th>
-                <th>학점</th>
-              </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-
-            <div class="hr-section-title">경력</div>
-            <table class="sub-table section-line">
-              <tr>
-                <th>입사일자</th>
-                <th>퇴사일자</th>
-                <th>회사명</th>
-                <th>직위</th>
-                <th>담당업무 / 직무</th>
-                <th>사업유형</th>
-                <th>퇴사사유</th>
-                <th>소재지</th>
-                <th>부서명</th>
-                <th>경력년수</th>
-                <th>경력월수</th>
-              </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-
-            <div class="hr-section-title">인사발령</div>
-            <table class="sub-table section-line">
-              <tr>
-                <th>발령일자</th>
-                <th>발령유형</th>
-                <th>직원구분</th>
-                <th>조직</th>
-                <th>직급</th>
-                <th>직위</th>
-                <th>직책</th>
-                <th>호칭</th>
-                <th>호봉</th>
-                <th>이전보직</th>
-                <th>발령보직</th>
-                <th>발령사유</th>
-                <th>적용</th>
-              </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-
-            <div class="hr-section-title">가족</div>
-            <table class="sub-table section-line">
-              <tr>
-                <th>관계</th>
-                <th>성명</th>
-                <th>나이</th>
-                <th>학력</th>
-                <th>직업</th>
-              </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-
-            <div class="hr-section-title">자격,면허</div>
-            <table class="sub-table section-line">
-              <tr>
-                <th>자격,면허</th>
-                <th>등급</th>
-                <th>번호</th>
-                <th>취득일자</th>
-                <th>만기일자</th>
-                <th>갱신일자</th>
-                <th>말소일자</th>
-                <th>말소사유</th>
-                <th>파일</th>
-              </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-
-            <div class="hr-section-title">외국어</div>
-            <table class="sub-table section-line">
-              <tr>
-                <th>외국어</th>
-                <th>독해</th>
-                <th>작문</th>
-                <th>회화</th>
-                <th>자격증</th>
-              </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td></tr>
-            </table>
-
-          </div>
+      <div class="top-right">
+        <div class="lang">한국어</div>
+        <div class="bell">🔔</div>
+        <div class="profile">
+          <div class="avatar">박</div>
+          <span>박용진 수석</span>
         </div>
       </div>
-    </section>
-  </main>
+    </header>
+
+    <main class="content">
+      <div class="page-title">
+        <div>
+          <h1>경영지원 · 인사관리</h1>
+          <p>근태 정책 관리와 직원별 인사카드를 분리하여 운영하는 화면 구성안입니다.</p>
+        </div>
+        <div class="quick-actions">
+          <button class="btn btn-line">엑셀 내보내기</button>
+          <button class="btn btn-primary">신규 직원 등록</button>
+        </div>
+      </div>
+
+      <div class="tabbar">
+        <button class="tab active" data-tab="admin">경영지원 관리자 설정</button>
+        <button class="tab" data-tab="hrcard">인사카드</button>
+      </div>
+
+      <section id="admin" class="panel active">
+        <div class="info-grid">
+          <div class="info-card">
+            <span>근태 유형</span>
+            <strong>12</strong>
+          </div>
+          <div class="info-card">
+            <span>자동 정책</span>
+            <strong>7</strong>
+          </div>
+          <div class="info-card">
+            <span>승인 선택형</span>
+            <strong>4</strong>
+          </div>
+          <div class="info-card">
+            <span>증빙 필수</span>
+            <strong>5</strong>
+          </div>
+        </div>
+
+        <div class="grid">
+          <section>
+            <article class="card">
+              <div class="card-head">
+                <h2>근태 유형 정책 관리</h2>
+                <button class="btn btn-primary">+ 유형 추가</button>
+              </div>
+              <div class="card-body table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>유형</th>
+                      <th>연차 차감</th>
+                      <th>일정 반영</th>
+                      <th>근무일 제외</th>
+                      <th>증빙서류</th>
+                      <th>사용 대상</th>
+                      <th>관리</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>연차</td>
+                      <td><span class="badge red">자동 차감</span></td>
+                      <td><span class="badge green">자동 반영</span></td>
+                      <td><span class="badge green">제외</span></td>
+                      <td><span class="badge blue">불필요</span></td>
+                      <td>전체 직원</td>
+                      <td><button class="btn btn-line">편집</button></td>
+                    </tr>
+                    <tr>
+                      <td>출장</td>
+                      <td><span class="badge blue">차감 없음</span></td>
+                      <td><span class="badge green">자동 반영</span></td>
+                      <td><span class="badge blue">제외 안함</span></td>
+                      <td><span class="badge blue">불필요</span></td>
+                      <td>전체 직원</td>
+                      <td><button class="btn btn-line">편집</button></td>
+                    </tr>
+                    <tr>
+                      <td>병가</td>
+                      <td><span class="badge yellow">승인 시 선택</span></td>
+                      <td><span class="badge green">자동 반영</span></td>
+                      <td><span class="badge yellow">승인 시 선택</span></td>
+                      <td><span class="badge red">필수</span></td>
+                      <td>전체 직원</td>
+                      <td><button class="btn btn-line">편집</button></td>
+                    </tr>
+                    <tr>
+                      <td>공가 / 예비군</td>
+                      <td><span class="badge yellow">승인 시 선택</span></td>
+                      <td><span class="badge green">자동 반영</span></td>
+                      <td><span class="badge yellow">승인 시 선택</span></td>
+                      <td><span class="badge red">필수</span></td>
+                      <td>한국 법인</td>
+                      <td><button class="btn btn-line">편집</button></td>
+                    </tr>
+                    <tr>
+                      <td>육아휴직</td>
+                      <td><span class="badge blue">차감 없음</span></td>
+                      <td><span class="badge green">자동 반영</span></td>
+                      <td><span class="badge green">제외</span></td>
+                      <td><span class="badge red">필수</span></td>
+                      <td>전체 직원</td>
+                      <td><button class="btn btn-line">편집</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>경영지원 승인 시 처리 기준</h2>
+              </div>
+              <div class="card-body table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>구분</th>
+                      <th>승인 시 선택 항목</th>
+                      <th>자동 반영 위치</th>
+                      <th>상태값</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>병가</td>
+                      <td>연차 차감 여부 / 근무일 제외 여부 / 증빙 확인</td>
+                      <td>일정관리, 마이페이지, 연차현황</td>
+                      <td><span class="badge yellow">승인 시 선택</span></td>
+                    </tr>
+                    <tr>
+                      <td>공가</td>
+                      <td>공가 인정 여부 / 연차 차감 여부 / 증빙 확인</td>
+                      <td>일정관리, 근태현황</td>
+                      <td><span class="badge yellow">승인 시 선택</span></td>
+                    </tr>
+                    <tr>
+                      <td>출장</td>
+                      <td>출장 기간 및 일정 반영 확인</td>
+                      <td>일정관리</td>
+                      <td><span class="badge green">자동 처리</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <aside>
+            <article class="card">
+              <div class="card-head">
+                <h2>정책 편집 예시</h2>
+              </div>
+              <div class="card-body">
+                <div class="form-grid">
+                  <div class="field">
+                    <label>유형명</label>
+                    <input value="병가" />
+                  </div>
+                  <div class="field">
+                    <label>사용 대상</label>
+                    <select>
+                      <option>전체 직원</option>
+                      <option>한국 법인</option>
+                      <option>베트남 법인</option>
+                      <option>특정 부서</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>연차 차감 정책</label>
+                    <select>
+                      <option>승인 시 선택</option>
+                      <option>자동 차감</option>
+                      <option>차감 없음</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>근무일 제외 정책</label>
+                    <select>
+                      <option>승인 시 선택</option>
+                      <option>자동 제외</option>
+                      <option>제외 안함</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="height:14px"></div>
+
+                <div class="toggle-list">
+                  <div class="toggle">
+                    <strong>일정 자동 등록</strong>
+                    <div class="switch"></div>
+                  </div>
+                  <div class="toggle">
+                    <strong>증빙서류 필수</strong>
+                    <div class="switch"></div>
+                  </div>
+                  <div class="toggle">
+                    <strong>경영지원 최종 선택 허용</strong>
+                    <div class="switch"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>연차 계산 참고</h2>
+              </div>
+              <div class="card-body">
+                <div class="notice">
+                  현재 발생 연차 계산은<br />
+                  <strong>https://www.nodong.kr/AnnuaVacationCal</strong><br />
+                  사이트 기준으로 검토 중입니다.<br /><br />
+                  해당 계산 로직을 분석하여 내부 웹 시스템에 자동 반영할 수 있도록 추가 연구가 필요합니다.
+                </div>
+              </div>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section id="hrcard" class="panel">
+        <div class="employee-layout">
+          <aside class="card">
+            <div class="card-head">
+              <h2>직원 목록</h2>
+              <button class="btn btn-line">검색</button>
+            </div>
+            <div class="card-body">
+              <div class="employee-list">
+                <div class="employee-item active">
+                  <div class="emp-photo">박</div>
+                  <div>
+                    <div class="emp-name">박용진</div>
+                    <div class="emp-meta">BIM파트 · 수석 · 재직</div>
+                  </div>
+                </div>
+                <div class="employee-item">
+                  <div class="emp-photo">김</div>
+                  <div>
+                    <div class="emp-name">김태영</div>
+                    <div class="emp-meta">경영지원본부 · 매니저 · 재직</div>
+                  </div>
+                </div>
+                <div class="employee-item">
+                  <div class="emp-photo">홍</div>
+                  <div>
+                    <div class="emp-name">홍길동</div>
+                    <div class="emp-meta">구조·BIM팀 · 사원 · 재직</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <section>
+            <article class="card">
+              <div class="card-head">
+                <h2>인사카드 상세</h2>
+                <div>
+                  <button class="btn btn-line">수정</button>
+                  <button class="btn btn-primary">저장</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="profile-head">
+                  <div class="profile-photo">사진</div>
+                  <div class="profile-main">
+                    <h2>박용진</h2>
+                    <div class="profile-tags">
+                      <span class="badge blue">BIM파트</span>
+                      <span class="badge gray">수석</span>
+                      <span class="badge green">재직</span>
+                      <span class="badge blue">2018-04-01 입사</span>
+                    </div>
+                  </div>
+                  <div>
+                    <button class="btn btn-line">인사정보 출력</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div class="section-grid">
+              <article class="card">
+                <div class="card-head">
+                  <h2>기본 인사정보</h2>
+                </div>
+                <div class="card-body">
+                  <dl class="detail-list">
+                    <dt>성명</dt><dd>박용진</dd>
+                    <dt>생년월일</dt><dd>1992-02-23</dd>
+                    <dt>부서</dt><dd>BIM파트</dd>
+                    <dt>입사일자</dt><dd>2018-04-01</dd>
+                    <dt>이메일</dt><dd>yjpark@con-cost.com</dd>
+                    <dt>휴대폰</dt><dd>010-7700-7859</dd>
+                    <dt>주소</dt><dd>서울 강북구 솔매로41길 30</dd>
+                  </dl>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="card-head">
+                  <h2>인사평가 정보</h2>
+                </div>
+                <div class="card-body">
+                  <div class="eval-grid">
+                    <div class="eval-box">
+                      <span>역량평가</span>
+                      <strong>A</strong>
+                    </div>
+                    <div class="eval-box">
+                      <span>업적평가</span>
+                      <strong>A-</strong>
+                    </div>
+                    <div class="eval-box">
+                      <span>종합평가</span>
+                      <strong>A</strong>
+                    </div>
+                  </div>
+                  <div style="height:14px"></div>
+                  <dl class="detail-list">
+                    <dt>평가년도</dt><dd>2026</dd>
+                    <dt>평가시기</dt><dd>상반기</dd>
+                    <dt>평가자</dt><dd>본부장</dd>
+                    <dt>평가일자</dt><dd>2026-06-30</dd>
+                    <dt>평가 코멘트</dt><dd>프로젝트 대응 및 산출 자동화 기여도 우수</dd>
+                  </dl>
+                </div>
+              </article>
+            </div>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>연봉평가</h2>
+                <span class="badge red">권한자 전용</span>
+              </div>
+              <div class="card-body table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>평가년도</th>
+                      <th>현재 연봉</th>
+                      <th>조정 연봉</th>
+                      <th>인상률</th>
+                      <th>연봉평가 등급</th>
+                      <th>최종 승인자</th>
+                      <th>적용일자</th>
+                      <th>비고</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>2026</td>
+                      <td>권한 필요</td>
+                      <td>권한 필요</td>
+                      <td>권한 필요</td>
+                      <td>A</td>
+                      <td>대표</td>
+                      <td>2026-07-01</td>
+                      <td>경영지원 및 권한자만 조회</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>학력 · 경력 · 자격 · 외국어</h2>
+              </div>
+              <div class="card-body table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>구분</th>
+                      <th>내용</th>
+                      <th>기간/취득일</th>
+                      <th>비고</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>학력</td>
+                      <td>대학교 / 전공명</td>
+                      <td>-</td>
+                      <td>졸업</td>
+                    </tr>
+                    <tr>
+                      <td>경력</td>
+                      <td>이전 회사 경력</td>
+                      <td>-</td>
+                      <td>경력년수 관리</td>
+                    </tr>
+                    <tr>
+                      <td>자격/면허</td>
+                      <td>관련 자격증</td>
+                      <td>-</td>
+                      <td>파일 첨부 가능</td>
+                    </tr>
+                    <tr>
+                      <td>외국어</td>
+                      <td>영어 / 베트남어 등</td>
+                      <td>-</td>
+                      <td>독해·작문·회화 관리</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>증명서 신청 및 출력</h2>
+                <span class="badge yellow">경영지원 승인 후 다운로드</span>
+              </div>
+              <div class="card-body">
+                <div class="cert-list">
+                  <div class="cert-item">
+                    <div>
+                      <div class="cert-title">재직증명서</div>
+                      <div class="cert-desc">신청 후 경영지원 승인 시 PDF 다운로드 가능</div>
+                    </div>
+                    <button class="btn btn-primary">출력 신청</button>
+                  </div>
+                  <div class="cert-item">
+                    <div>
+                      <div class="cert-title">원천징수영수증</div>
+                      <div class="cert-desc">연도 선택 후 신청, 승인 완료 후 다운로드 가능</div>
+                    </div>
+                    <button class="btn btn-primary">출력 신청</button>
+                  </div>
+                  <div class="cert-item">
+                    <div>
+                      <div class="cert-title">기타 증명서</div>
+                      <div class="cert-desc">경력증명서 등 추가 증명서 신청 가능</div>
+                    </div>
+                    <button class="btn btn-line">신청 대기</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+    </main>
+  </section>
 </div>
 
 <script>
-const buttons = document.querySelectorAll(".tab-btn");
+const tabs = document.querySelectorAll(".tab");
 const panels = document.querySelectorAll(".panel");
 
-buttons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    buttons.forEach(b => b.classList.remove("active"));
-    panels.forEach(p => p.classList.remove("active"));
+tabs.forEach(tab=>{
+  tab.addEventListener("click",()=>{
+    tabs.forEach(t=>t.classList.remove("active"));
+    panels.forEach(p=>p.classList.remove("active"));
 
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.tab).classList.add("active");
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
   });
 });
 </script>
