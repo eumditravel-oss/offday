@@ -1,23 +1,32 @@
+<!-- index.html -->
+<!-- CON-COST Groupware Style / 연차·휴가·출장 관리 UI 시안 -->
+<!-- 기존 GitHub Pages 저장소에 index.html로 그대로 붙여넣어 사용 -->
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CONCOST Groupware - 연차·휴가 관리 UI</title>
+  <title>CON-COST Groupware | 연차·근태 관리</title>
+
   <style>
     :root {
-      --bg: #f5f7fb;
-      --panel: #ffffff;
-      --line: #e3e8f0;
-      --text: #172033;
-      --muted: #6b7280;
-      --blue: #2563eb;
-      --blue-soft: #eaf1ff;
-      --green: #16a34a;
-      --red: #dc2626;
-      --yellow: #f59e0b;
-      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
+      --cc-navy: #0f172a;
+      --cc-navy-2: #111827;
+      --cc-blue: #1d4ed8;
+      --cc-blue-2: #2563eb;
+      --cc-sky: #e8f1ff;
+      --cc-bg: #f4f6fa;
+      --cc-card: #ffffff;
+      --cc-line: #dbe2ea;
+      --cc-line-2: #edf1f6;
+      --cc-text: #1f2937;
+      --cc-sub: #64748b;
+      --cc-red: #dc2626;
+      --cc-green: #15803d;
+      --cc-yellow: #d97706;
+      --cc-radius: 14px;
+      --cc-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -26,347 +35,482 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    .app {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 260px 1fr;
-    }
-
-    .sidebar {
-      background: #111827;
-      color: #fff;
-      padding: 24px 18px;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 28px;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-title {
-      font-size: 12px;
-      color: #9ca3af;
-      margin: 22px 0 8px;
-    }
-
-    .nav-item {
-      padding: 12px 14px;
-      border-radius: 12px;
-      color: #d1d5db;
-      margin-bottom: 6px;
-      cursor: pointer;
-    }
-
-    .nav-item.active,
-    .nav-item:hover {
-      background: #2563eb;
-      color: #fff;
-    }
-
-    main {
-      padding: 26px;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 22px;
-    }
-
-    .topbar h1 {
-      margin: 0;
-      font-size: 26px;
-      letter-spacing: -0.7px;
-    }
-
-    .topbar p {
-      margin: 6px 0 0;
-      color: var(--muted);
+      background: var(--cc-bg);
+      color: var(--cc-text);
+      font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 14px;
     }
 
-    .badge {
-      background: var(--blue-soft);
-      color: var(--blue);
-      padding: 8px 13px;
-      border-radius: 999px;
-      font-size: 13px;
+    .layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+    }
+
+    .sidebar {
+      background: var(--cc-navy);
+      color: #fff;
+      padding: 20px 16px;
+    }
+
+    .brand {
+      padding: 6px 8px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 18px;
+    }
+
+    .brand-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+    }
+
+    .brand-sub {
+      margin-top: 5px;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    .side-section {
+      margin-top: 20px;
+    }
+
+    .side-title {
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 0 8px 8px;
+    }
+
+    .side-item {
+      padding: 11px 12px;
+      border-radius: 10px;
+      color: #d1d5db;
+      margin-bottom: 5px;
+      cursor: default;
+      font-weight: 600;
+    }
+
+    .side-item.active {
+      background: var(--cc-blue);
+      color: #fff;
+    }
+
+    .main {
+      min-width: 0;
+    }
+
+    .topbar {
+      height: 62px;
+      background: #fff;
+      border-bottom: 1px solid var(--cc-line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 26px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .top-tab {
+      font-weight: 800;
+      color: #475569;
+    }
+
+    .top-tab.active {
+      color: var(--cc-blue);
+    }
+
+    .user-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #475569;
       font-weight: 700;
     }
 
-    .grid {
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--cc-blue), #38bdf8);
+      color: #fff;
       display: grid;
-      grid-template-columns: 1.35fr 0.9fr;
-      gap: 20px;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .content {
+      padding: 24px 26px 34px;
+    }
+
+    .page-head {
+      background: linear-gradient(135deg, #ffffff, #f8fbff);
+      border: 1px solid var(--cc-line);
+      border-radius: var(--cc-radius);
+      box-shadow: var(--cc-shadow);
+      padding: 22px 24px;
+      margin-bottom: 18px;
+    }
+
+    .page-head h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: -0.7px;
+    }
+
+    .page-head p {
+      margin: 8px 0 0;
+      color: var(--cc-sub);
+      line-height: 1.6;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tab {
+      background: #fff;
+      border: 1px solid var(--cc-line);
+      padding: 10px 14px;
+      border-radius: 11px;
+      font-weight: 800;
+      color: #475569;
+    }
+
+    .tab.active {
+      background: var(--cc-blue);
+      color: #fff;
+      border-color: var(--cc-blue);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) 360px;
+      gap: 18px;
       align-items: start;
     }
 
-    .section {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      margin-bottom: 20px;
+    .card {
+      background: var(--cc-card);
+      border: 1px solid var(--cc-line);
+      border-radius: var(--cc-radius);
+      box-shadow: var(--cc-shadow);
+      margin-bottom: 18px;
+      overflow: hidden;
     }
 
-    .section h2 {
-      margin: 0 0 16px;
-      font-size: 18px;
+    .card-head {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--cc-line-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fbfdff;
+    }
+
+    .card-head h2 {
+      margin: 0;
+      font-size: 17px;
       letter-spacing: -0.4px;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      background: var(--cc-sky);
+      color: var(--cc-blue);
     }
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
     }
 
     label {
       display: block;
-      font-size: 13px;
-      font-weight: 700;
       margin-bottom: 7px;
-      color: #374151;
+      color: #334155;
+      font-weight: 800;
+      font-size: 13px;
     }
 
     input,
     select,
     textarea {
       width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px;
+      border: 1px solid var(--cc-line);
+      border-radius: 10px;
+      padding: 11px 12px;
       font-size: 14px;
-      outline: none;
+      color: var(--cc-text);
       background: #fff;
+      outline: none;
     }
 
     textarea {
-      min-height: 92px;
+      min-height: 86px;
       resize: vertical;
     }
 
-    .full {
-      grid-column: 1 / -1;
-    }
-
-    .option-box {
+    .policy-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 8px;
     }
 
-    .option {
-      border: 1px solid var(--line);
-      border-radius: 13px;
+    .policy-box {
+      border: 1px solid var(--cc-line);
+      border-radius: 12px;
+      background: #f8fafc;
       padding: 13px;
-      background: #fafafa;
-      font-size: 14px;
+      min-height: 82px;
     }
 
-    .option strong {
+    .policy-box strong {
       display: block;
-      margin-bottom: 4px;
+      font-size: 14px;
+      margin-bottom: 6px;
     }
 
-    .btns {
+    .policy-box span {
+      color: var(--cc-sub);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .button-row {
       display: flex;
       justify-content: flex-end;
-      gap: 10px;
-      margin-top: 18px;
+      gap: 8px;
+      margin-top: 16px;
     }
 
     button {
-      border: none;
-      border-radius: 12px;
-      padding: 12px 18px;
-      font-weight: 800;
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 15px;
+      font-weight: 900;
       cursor: pointer;
     }
 
-    .btn-secondary {
+    .btn-gray {
       background: #eef2f7;
       color: #334155;
     }
 
-    .btn-primary {
-      background: var(--blue);
+    .btn-blue {
+      background: var(--cc-blue);
       color: #fff;
+    }
+
+    .btn-line {
+      border: 1px solid var(--cc-line);
+      background: #fff;
+      color: #334155;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      overflow: hidden;
-      border-radius: 14px;
-      font-size: 14px;
-    }
-
-    th,
-    td {
-      padding: 13px 10px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
+      font-size: 13px;
     }
 
     th {
       background: #f8fafc;
       color: #475569;
-      font-size: 13px;
+      padding: 11px 9px;
+      text-align: left;
+      border-bottom: 1px solid var(--cc-line);
+      font-weight: 900;
+    }
+
+    td {
+      padding: 11px 9px;
+      border-bottom: 1px solid var(--cc-line-2);
+      vertical-align: middle;
     }
 
     .tag {
       display: inline-flex;
-      align-items: center;
+      padding: 5px 8px;
       border-radius: 999px;
-      padding: 5px 9px;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
+      white-space: nowrap;
     }
 
     .tag.blue {
-      background: var(--blue-soft);
-      color: var(--blue);
+      background: var(--cc-sky);
+      color: var(--cc-blue);
     }
 
     .tag.green {
-      background: #eafaf0;
-      color: var(--green);
+      background: #eaf7ee;
+      color: var(--cc-green);
     }
 
     .tag.red {
       background: #fee2e2;
-      color: var(--red);
+      color: var(--cc-red);
     }
 
     .tag.yellow {
       background: #fff7ed;
-      color: var(--yellow);
+      color: var(--cc-yellow);
     }
 
-    .profile {
+    .profile-box {
       display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 15px;
+      grid-template-columns: 64px 1fr;
+      gap: 13px;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
     }
 
-    .avatar {
-      width: 72px;
-      height: 72px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #2563eb, #38bdf8);
+    .profile-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--cc-blue), #0ea5e9);
       display: grid;
       place-items: center;
       color: #fff;
       font-weight: 900;
-      font-size: 22px;
+      font-size: 21px;
     }
 
-    .stats {
+    .profile-name {
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    .profile-info {
+      color: var(--cc-sub);
+      margin-top: 4px;
+    }
+
+    .leave-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 9px;
     }
 
     .stat {
       background: #f8fafc;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
+      border: 1px solid var(--cc-line);
+      border-radius: 12px;
+      padding: 12px;
     }
 
     .stat span {
-      color: var(--muted);
+      display: block;
+      color: var(--cc-sub);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .stat strong {
       display: block;
-      font-size: 22px;
       margin-top: 5px;
+      font-size: 22px;
+      letter-spacing: -0.5px;
     }
 
-    .calendar-list {
+    .schedule-list {
       display: grid;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .cal-item {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 13px;
+    .schedule-item {
+      border: 1px solid var(--cc-line);
+      border-radius: 11px;
+      padding: 11px 12px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       background: #fff;
+    }
+
+    .schedule-date {
+      color: var(--cc-sub);
+      font-weight: 900;
     }
 
     .flow {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
 
-    .flow div {
+    .flow-step {
       background: #f8fafc;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
+      border: 1px solid var(--cc-line);
+      border-radius: 12px;
+      padding: 13px 8px;
       text-align: center;
-      font-weight: 800;
-      font-size: 13px;
+      font-weight: 900;
+      color: #334155;
     }
 
-    .note {
+    .notice {
       background: #fff7ed;
       border: 1px solid #fed7aa;
       color: #9a3412;
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 14px;
-      line-height: 1.6;
-      font-size: 14px;
+      line-height: 1.7;
     }
 
-    .db-grid {
+    .db-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 10px;
     }
 
     .db-card {
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      padding: 14px;
+      border: 1px solid var(--cc-line);
+      border-radius: 12px;
       background: #fbfdff;
+      padding: 13px;
     }
 
     .db-card h3 {
-      margin: 0 0 10px;
-      font-size: 15px;
+      margin: 0 0 8px;
+      font-size: 14px;
     }
 
     .db-card code {
       display: block;
       color: #475569;
-      line-height: 1.8;
-      font-size: 13px;
+      line-height: 1.7;
       white-space: pre-line;
+      font-size: 12px;
     }
 
-    @media (max-width: 1100px) {
-      .app {
+    @media (max-width: 1180px) {
+      .layout {
         grid-template-columns: 1fr;
       }
 
@@ -374,292 +518,403 @@
         display: none;
       }
 
-      .grid,
-      .form-grid,
-      .stats,
-      .flow,
-      .db-grid {
+      .work-grid {
         grid-template-columns: 1fr;
+      }
+
+      .flow,
+      .policy-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        height: auto;
+        padding: 14px;
+        align-items: flex-start;
+        gap: 12px;
+        flex-direction: column;
+      }
+
+      .content {
+        padding: 16px;
+      }
+
+      .form-grid,
+      .flow,
+      .policy-row,
+      .leave-stats {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        min-width: 720px;
+      }
+
+      .table-scroll {
+        overflow-x: auto;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="app">
+  <div class="layout">
     <aside class="sidebar">
-      <div class="logo">CONCOST<br />Groupware</div>
-
-      <div class="nav-title">전자결재</div>
-      <div class="nav-item active">근태/휴가 신청</div>
-      <div class="nav-item">결재 대기함</div>
-      <div class="nav-item">결재 완료함</div>
-
-      <div class="nav-title">일정관리</div>
-      <div class="nav-item">월간 일정</div>
-      <div class="nav-item">팀 일정</div>
-
-      <div class="nav-title">관리자</div>
-      <div class="nav-item">근태 유형 설정</div>
-      <div class="nav-item">연차 계산 설정</div>
-    </aside>
-
-    <main>
-      <div class="topbar">
-        <div>
-          <h1>연차·휴가·출장 관리 추가 반영안</h1>
-          <p>전자결재 승인 후 일정관리와 마이페이지 연차 현황까지 자동 연동되는 구조</p>
-        </div>
-        <div class="badge">Groupware 추가 개발안</div>
+      <div class="brand">
+        <div class="brand-title">CON-COST</div>
+        <div class="brand-sub">Internal Groupware System</div>
       </div>
 
-      <div class="grid">
-        <section>
-          <div class="section">
-            <h2>1. 근태/휴가 신청 화면</h2>
+      <div class="side-section">
+        <div class="side-title">전자결재</div>
+        <div class="side-item active">근태/휴가 신청</div>
+        <div class="side-item">결재 대기함</div>
+        <div class="side-item">결재 완료함</div>
+        <div class="side-item">기안서 관리</div>
+      </div>
 
-            <div class="form-grid">
-              <div>
-                <label>신청 유형</label>
-                <select id="leaveType">
-                  <option>연차</option>
-                  <option>출장</option>
-                  <option>병가</option>
-                  <option>공가</option>
-                  <option>육아휴직</option>
-                  <option>기타</option>
-                </select>
+      <div class="side-section">
+        <div class="side-title">업무관리</div>
+        <div class="side-item">프로젝트</div>
+        <div class="side-item">업무일지</div>
+        <div class="side-item">프로젝트 소요시간</div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">일정관리</div>
+        <div class="side-item">월간 일정</div>
+        <div class="side-item">팀 일정</div>
+        <div class="side-item">근태 일정</div>
+      </div>
+
+      <div class="side-section">
+        <div class="side-title">관리자</div>
+        <div class="side-item">근태 유형 설정</div>
+        <div class="side-item">연차 계산 설정</div>
+        <div class="side-item">권한 관리</div>
+      </div>
+    </aside>
+
+    <section class="main">
+      <header class="topbar">
+        <div class="top-left">
+          <div class="top-tab">전자메일</div>
+          <div class="top-tab active">전자결재</div>
+          <div class="top-tab">업무관리</div>
+          <div class="top-tab">산출</div>
+          <div class="top-tab">일정관리</div>
+        </div>
+
+        <div class="user-box">
+          <div class="user-avatar">박</div>
+          <span>박용진 수석</span>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="page-head">
+          <h1>연차·휴가·출장 관리 추가 반영안</h1>
+          <p>
+            연차, 출장, 병가, 공가, 육아휴직 등 근태 유형을 전자결재와 연결하고,
+            승인 완료 시 일정관리 및 마이페이지 연차 현황에 자동 반영되는 구조입니다.
+          </p>
+        </section>
+
+        <div class="tabs">
+          <div class="tab active">신청 화면</div>
+          <div class="tab">관리자 설정</div>
+          <div class="tab">일정 연동</div>
+          <div class="tab">연차 계산</div>
+        </div>
+
+        <div class="work-grid">
+          <section>
+            <article class="card">
+              <div class="card-head">
+                <h2>근태/휴가 신청</h2>
+                <span class="status-chip">전자결재 연동</span>
               </div>
 
-              <div>
-                <label>신청자</label>
-                <input value="박용진 수석 / BIM파트" />
-              </div>
-
-              <div>
-                <label>시작일</label>
-                <input type="date" value="2026-04-24" />
-              </div>
-
-              <div>
-                <label>종료일</label>
-                <input type="date" value="2026-04-25" />
-              </div>
-
-              <div class="full">
-                <label>신청 사유</label>
-                <textarea>병원 진료 및 안정 필요</textarea>
-              </div>
-
-              <div class="full">
-                <label>연차 차감 여부</label>
-                <div class="option-box">
-                  <div class="option">
-                    <strong>자동 정책 적용</strong>
-                    유형별 기본값 적용
+              <div class="card-body">
+                <div class="form-grid">
+                  <div class="field">
+                    <label>신청 유형</label>
+                    <select id="leaveType">
+                      <option>연차</option>
+                      <option>출장</option>
+                      <option>병가</option>
+                      <option>공가</option>
+                      <option>육아휴직</option>
+                      <option>기타</option>
+                    </select>
                   </div>
-                  <div class="option">
-                    <strong>연차 차감</strong>
-                    잔여 연차에서 차감
+
+                  <div class="field">
+                    <label>신청자</label>
+                    <input value="박용진 수석 / BIM파트" />
                   </div>
-                  <div class="option">
-                    <strong>연차 차감 안함</strong>
-                    일정에만 반영
+
+                  <div class="field">
+                    <label>시작일</label>
+                    <input type="date" value="2026-04-24" />
+                  </div>
+
+                  <div class="field">
+                    <label>종료일</label>
+                    <input type="date" value="2026-04-25" />
+                  </div>
+
+                  <div class="field full">
+                    <label>신청 사유</label>
+                    <textarea>병원 진료 및 안정 필요</textarea>
+                  </div>
+
+                  <div class="field full">
+                    <label>연차 차감 처리 방식</label>
+                    <div class="policy-row">
+                      <div class="policy-box">
+                        <strong>자동 정책 적용</strong>
+                        <span>유형별 기본 설정값에 따라 자동 처리</span>
+                      </div>
+                      <div class="policy-box">
+                        <strong>연차 차감</strong>
+                        <span>보유 연차에서 신청 일수만큼 차감</span>
+                      </div>
+                      <div class="policy-box">
+                        <strong>연차 차감 안함</strong>
+                        <span>일정에는 반영하되 연차는 미차감</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label>일정관리 반영 여부</label>
+                    <select>
+                      <option>승인 완료 시 자동 등록</option>
+                      <option>등록 안함</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label>근무일수 제외 여부</label>
+                    <select>
+                      <option>유형별 정책 적용</option>
+                      <option>근무일수 제외</option>
+                      <option>근무일수 제외 안함</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="button-row">
+                  <button class="btn-gray">임시저장</button>
+                  <button class="btn-blue">결재 요청</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>경영지원 관리자 설정</h2>
+                <button class="btn-blue">+ 새 유형 추가</button>
+              </div>
+
+              <div class="card-body table-scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>유형명</th>
+                      <th>연차 차감</th>
+                      <th>일정 반영</th>
+                      <th>근무일 제외</th>
+                      <th>권한</th>
+                      <th>관리</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>연차</td>
+                      <td><span class="tag red">자동 차감</span></td>
+                      <td><span class="tag green">반영</span></td>
+                      <td><span class="tag green">제외</span></td>
+                      <td>경영지원</td>
+                      <td><button class="btn-line">편집</button></td>
+                    </tr>
+                    <tr>
+                      <td>출장</td>
+                      <td><span class="tag blue">차감 없음</span></td>
+                      <td><span class="tag green">반영</span></td>
+                      <td><span class="tag blue">제외 안함</span></td>
+                      <td>경영지원</td>
+                      <td><button class="btn-line">편집</button></td>
+                    </tr>
+                    <tr>
+                      <td>병가</td>
+                      <td><span class="tag yellow">선택 가능</span></td>
+                      <td><span class="tag green">반영</span></td>
+                      <td><span class="tag yellow">선택 가능</span></td>
+                      <td>경영지원</td>
+                      <td><button class="btn-line">편집</button></td>
+                    </tr>
+                    <tr>
+                      <td>공가 / 예비군</td>
+                      <td><span class="tag yellow">선택 가능</span></td>
+                      <td><span class="tag green">반영</span></td>
+                      <td><span class="tag yellow">선택 가능</span></td>
+                      <td>경영지원</td>
+                      <td><button class="btn-line">편집</button></td>
+                    </tr>
+                    <tr>
+                      <td>육아휴직</td>
+                      <td><span class="tag blue">차감 없음</span></td>
+                      <td><span class="tag green">반영</span></td>
+                      <td><span class="tag green">제외</span></td>
+                      <td>경영지원</td>
+                      <td><button class="btn-line">편집</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>승인 후 자동 처리 흐름</h2>
+              </div>
+
+              <div class="card-body">
+                <div class="flow">
+                  <div class="flow-step">신청 작성</div>
+                  <div class="flow-step">결재 요청</div>
+                  <div class="flow-step">경영지원 승인</div>
+                  <div class="flow-step">일정 등록</div>
+                  <div class="flow-step">연차 차감</div>
+                  <div class="flow-step">마이페이지 갱신</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-head">
+                <h2>연차 발생 계산 로직</h2>
+                <span class="status-chip">추가 연구 필요</span>
+              </div>
+
+              <div class="card-body">
+                <div class="notice">
+                  현재 발생 연차 계산은
+                  <strong>https://www.nodong.kr/AnnuaVacationCal</strong>
+                  사이트에서 계산하고 있습니다.<br />
+                  해당 사이트의 연차 발생 계산 로직을 분석하여,
+                  CON-COST Groupware 내부 웹 시스템에 자동 반영할 수 있도록 추가 연구가 필요합니다.
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <aside>
+            <article class="card">
+              <div class="card-head">
+                <h2>마이페이지 연차 현황</h2>
+              </div>
+
+              <div class="card-body">
+                <div class="profile-box">
+                  <div class="profile-photo">박</div>
+                  <div>
+                    <div class="profile-name">박용진 수석</div>
+                    <div class="profile-info">BIM파트 · 근태 현황</div>
+                  </div>
+                </div>
+
+                <div class="leave-stats">
+                  <div class="stat">
+                    <span>발생 연차</span>
+                    <strong>15</strong>
+                  </div>
+                  <div class="stat">
+                    <span>사용 연차</span>
+                    <strong>6</strong>
+                  </div>
+                  <div class="stat">
+                    <span>잔여 연차</span>
+                    <strong>9</strong>
                   </div>
                 </div>
               </div>
+            </article>
 
-              <div>
-                <label>일정관리 자동 반영</label>
-                <select>
-                  <option>승인 완료 시 자동 등록</option>
-                  <option>등록 안함</option>
-                </select>
+            <article class="card">
+              <div class="card-head">
+                <h2>일정관리 반영 예시</h2>
               </div>
 
-              <div>
-                <label>근무일수 제외 여부</label>
-                <select>
-                  <option>유형별 정책 적용</option>
-                  <option>제외</option>
-                  <option>제외 안함</option>
-                </select>
+              <div class="card-body">
+                <div class="schedule-list">
+                  <div class="schedule-item">
+                    <span class="schedule-date">04.24</span>
+                    <strong>박용진 - 병가</strong>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-date">04.25</span>
+                    <strong>박용진 - 병가</strong>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-date">04.26</span>
+                    <strong>김태영 - 출장</strong>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-date">04.28</span>
+                    <strong>홍길동 - 연차</strong>
+                  </div>
+                </div>
               </div>
-            </div>
+            </article>
 
-            <div class="btns">
-              <button class="btn-secondary">임시저장</button>
-              <button class="btn-primary">결재 요청</button>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>2. 경영지원 관리자 설정</h2>
-
-            <table>
-              <thead>
-                <tr>
-                  <th>유형명</th>
-                  <th>연차 차감</th>
-                  <th>일정 반영</th>
-                  <th>근무일 제외</th>
-                  <th>관리</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>연차</td>
-                  <td><span class="tag red">자동 차감</span></td>
-                  <td><span class="tag green">반영</span></td>
-                  <td><span class="tag green">제외</span></td>
-                  <td><button class="btn-secondary">편집</button></td>
-                </tr>
-                <tr>
-                  <td>출장</td>
-                  <td><span class="tag blue">차감 없음</span></td>
-                  <td><span class="tag green">반영</span></td>
-                  <td><span class="tag blue">제외 안함</span></td>
-                  <td><button class="btn-secondary">편집</button></td>
-                </tr>
-                <tr>
-                  <td>병가</td>
-                  <td><span class="tag yellow">선택 가능</span></td>
-                  <td><span class="tag green">반영</span></td>
-                  <td><span class="tag yellow">선택 가능</span></td>
-                  <td><button class="btn-secondary">편집</button></td>
-                </tr>
-                <tr>
-                  <td>공가 / 예비군</td>
-                  <td><span class="tag yellow">선택 가능</span></td>
-                  <td><span class="tag green">반영</span></td>
-                  <td><span class="tag yellow">선택 가능</span></td>
-                  <td><button class="btn-secondary">편집</button></td>
-                </tr>
-                <tr>
-                  <td>육아휴직</td>
-                  <td><span class="tag blue">차감 없음</span></td>
-                  <td><span class="tag green">반영</span></td>
-                  <td><span class="tag green">제외</span></td>
-                  <td><button class="btn-secondary">편집</button></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="btns">
-              <button class="btn-primary">+ 새 유형 추가</button>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>3. 승인 후 자동 처리 흐름</h2>
-            <div class="flow">
-              <div>신청 작성</div>
-              <div>결재 요청</div>
-              <div>경영지원 승인</div>
-              <div>일정 자동 등록</div>
-              <div>연차 차감 반영</div>
-              <div>마이페이지 갱신</div>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>4. 연차 계산 로직 검토</h2>
-            <div class="note">
-              현재 발생 연차 계산은 아래 사이트에서 계산하고 있습니다.<br />
-              <strong>https://www.nodong.kr/AnnuaVacationCal</strong><br />
-              해당 사이트의 연차 발생 계산 로직을 분석하여, 우리 웹 시스템에 자동 반영할 수 있도록 추가 연구가 필요합니다.
-            </div>
-          </div>
-        </section>
-
-        <aside>
-          <div class="section">
-            <h2>마이페이지 연차 현황</h2>
-
-            <div class="profile">
-              <div class="avatar">박</div>
-              <div>
-                <strong>박용진 수석</strong>
-                <p style="margin:6px 0 0;color:var(--muted);font-size:14px;">BIM파트</p>
+            <article class="card">
+              <div class="card-head">
+                <h2>추천 데이터 구조</h2>
               </div>
-            </div>
 
-            <div class="stats">
-              <div class="stat">
-                <span>발생 연차</span>
-                <strong>15</strong>
-              </div>
-              <div class="stat">
-                <span>사용 연차</span>
-                <strong>6</strong>
-              </div>
-              <div class="stat">
-                <span>잔여 연차</span>
-                <strong>9</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>일정관리 자동 반영 예시</h2>
-            <div class="calendar-list">
-              <div class="cal-item">
-                <span>04.24</span>
-                <strong>박용진 - 병가</strong>
-              </div>
-              <div class="cal-item">
-                <span>04.25</span>
-                <strong>박용진 - 병가</strong>
-              </div>
-              <div class="cal-item">
-                <span>04.26</span>
-                <strong>김태영 - 출장</strong>
-              </div>
-              <div class="cal-item">
-                <span>04.28</span>
-                <strong>홍길동 - 연차</strong>
-              </div>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2>추천 DB 구조</h2>
-
-            <div class="db-grid">
-              <div class="db-card">
-                <h3>leave_types</h3>
-                <code>id
+              <div class="card-body">
+                <div class="db-list">
+                  <div class="db-card">
+                    <h3>leave_types</h3>
+                    <code>id
 name
 is_deduct_leave
 is_calendar_sync
 is_workday_excluded
 allow_manual_override</code>
-              </div>
+                  </div>
 
-              <div class="db-card">
-                <h3>leave_requests</h3>
-                <code>user_id
+                  <div class="db-card">
+                    <h3>leave_requests</h3>
+                    <code>user_id
 type_id
 start_date
 end_date
 deduct_leave
 approval_status
 calendar_sync</code>
-              </div>
+                  </div>
 
-              <div class="db-card">
-                <h3>annual_leave_summary</h3>
-                <code>user_id
+                  <div class="db-card">
+                    <h3>annual_leave_summary</h3>
+                    <code>user_id
 total_leave
 used_leave
 remaining_leave
 last_updated</code>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </main>
+            </article>
+          </aside>
+        </div>
+      </main>
+    </section>
   </div>
 
   <script>
@@ -667,12 +922,12 @@ last_updated</code>
       "연차": {
         deduct: "자동 차감",
         calendar: "승인 완료 시 자동 등록",
-        workday: "제외"
+        workday: "근무일수 제외"
       },
       "출장": {
-        deduct: "연차 차감 안함",
+        deduct: "연차 차감 없음",
         calendar: "승인 완료 시 자동 등록",
-        workday: "제외 안함"
+        workday: "근무일수 제외 안함"
       },
       "병가": {
         deduct: "경영지원 선택",
@@ -685,9 +940,9 @@ last_updated</code>
         workday: "경영지원 선택"
       },
       "육아휴직": {
-        deduct: "연차 차감 안함",
+        deduct: "연차 차감 없음",
         calendar: "승인 완료 시 자동 등록",
-        workday: "제외"
+        workday: "근무일수 제외"
       },
       "기타": {
         deduct: "경영지원 선택",
@@ -701,10 +956,10 @@ last_updated</code>
       const policy = leavePolicies[type];
 
       alert(
-        `[${type}] 기본 정책\n\n` +
-        `연차 차감: ${policy.deduct}\n` +
-        `일정 반영: ${policy.calendar}\n` +
-        `근무일 제외: ${policy.workday}`
+        "[" + type + "] 기본 정책\\n\\n" +
+        "연차 차감: " + policy.deduct + "\\n" +
+        "일정 반영: " + policy.calendar + "\\n" +
+        "근무일수: " + policy.workday
       );
     });
   </script>
